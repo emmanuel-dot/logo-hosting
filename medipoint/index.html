@@ -8,15 +8,13 @@
 </head>
 <body>
 
-<!-- ============================================================
-     SIDEBAR NAV
-     ============================================================ -->
+<!-- ===== SIDEBAR (desktop) ===== -->
 <aside class="sidebar" id="sidebar">
   <div class="logo-area">
     <div class="logo-icon">
-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="24" r="22" fill="#1a6fbf" stroke="#fff" stroke-width="2"/>
-        <path d="M14 24 Q18 14 22 24 Q26 34 30 24 Q34 14 34 24" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 24 Q18 14 22 24 Q26 34 30 24 Q34 14 34 24" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         <circle cx="24" cy="24" r="3" fill="#fff"/>
       </svg>
     </div>
@@ -29,387 +27,263 @@
   <nav class="nav-menu">
     <a class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
       <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-      Dashboard
+      <span>Dashboard</span>
     </a>
     <a class="nav-item" data-page="register" onclick="showPage('register')">
       <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      Register Patient
+      <span>Register Patient</span>
     </a>
     <a class="nav-item" data-page="findings" onclick="showPage('findings')">
       <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-      Findings Entry
+      <span>Findings Entry</span>
     </a>
     <a class="nav-item" data-page="reports" onclick="showPage('reports')">
       <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      Reports
+      <span>Reports</span>
     </a>
   </nav>
 
   <div class="sidebar-footer">
-    <div class="user-chip">
-      <div class="user-avatar">OP</div>
-      <div>
-        <div style="font-weight:600;font-size:13px">Operator</div>
-        <div style="font-size:11px;opacity:.7">Radiology</div>
-      </div>
+    <div class="user-avatar-lg">OP</div>
+    <div>
+      <div class="user-name">Operator</div>
+      <div class="user-role">Radiology Dept</div>
     </div>
   </div>
 </aside>
 
-<!-- ============================================================
-     MAIN CONTENT
-     ============================================================ -->
-<main class="main-content">
+<!-- ===== MAIN ===== -->
+<div class="main-wrap">
 
-  <!-- ── HEADER ── -->
   <header class="topbar">
     <div class="topbar-left">
-      <button class="menu-btn" onclick="toggleSidebar()">
+      <button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('open')">
         <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
       </button>
       <h1 class="page-title" id="pageTitle">Dashboard</h1>
     </div>
-    <div class="topbar-right">
-      <div class="date-badge" id="currentDate"></div>
-    </div>
+    <div class="date-chip" id="currentDate"></div>
   </header>
 
-  <!-- ── DASHBOARD PAGE ── -->
+  <!-- DASHBOARD -->
   <section class="page active" id="page-dashboard">
-    <div class="stats-row">
+    <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-icon blue"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
-        <div class="stat-info">
-          <div class="stat-value" id="statTotal">0</div>
-          <div class="stat-label">Total Patients</div>
-        </div>
+        <div class="stat-icon c-blue"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <div class="stat-body"><div class="stat-num" id="statTotal">0</div><div class="stat-lbl">Total Patients</div></div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon green"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
-        <div class="stat-info">
-          <div class="stat-value" id="statComplete">0</div>
-          <div class="stat-label">Reports Ready</div>
-        </div>
+        <div class="stat-icon c-green"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <div class="stat-body"><div class="stat-num" id="statComplete">0</div><div class="stat-lbl">Reports Ready</div></div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon orange"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
-        <div class="stat-info">
-          <div class="stat-value" id="statPending">0</div>
-          <div class="stat-label">Pending Findings</div>
-        </div>
+        <div class="stat-icon c-orange"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div>
+        <div class="stat-body"><div class="stat-num" id="statPending">0</div><div class="stat-lbl">Pending Findings</div></div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon purple"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 12h2v5H7zm4-3h2v8h-2zm4-3h2v11h-2z"/></svg></div>
-        <div class="stat-info">
-          <div class="stat-value" id="statToday">0</div>
-          <div class="stat-label">Today's Scans</div>
-        </div>
+        <div class="stat-icon c-purple"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 12h2v5H7zm4-3h2v8h-2zm4-3h2v11h-2z"/></svg></div>
+        <div class="stat-body"><div class="stat-num" id="statToday">0</div><div class="stat-lbl">Today's Scans</div></div>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header">
+    <div class="section-card">
+      <div class="section-card-head">
         <h2>Recent Patients</h2>
-        <button class="btn btn-primary" onclick="showPage('register')">+ New Patient</button>
+        <button class="btn btn-primary" onclick="showPage('register')"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>New Patient</button>
       </div>
-      <div class="table-wrap">
-        <table class="data-table" id="dashboardTable">
-          <thead>
-            <tr>
-              <th>ID</th><th>Patient Name</th><th>Age/Sex</th><th>Date</th><th>Scan Type</th><th>Status</th><th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="dashboardTableBody">
-            <tr class="empty-row"><td colspan="7">No patients registered yet.</td></tr>
-          </tbody>
-        </table>
+      <div class="table-scroll">
+        <table class="data-table"><thead><tr><th>ID</th><th>Patient Name</th><th>Age / Sex</th><th>Scan Date</th><th>Scan Type</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="dashboardTableBody"><tr class="empty-row"><td colspan="7">No patients registered yet. Click <strong>New Patient</strong> to begin.</td></tr></tbody></table>
       </div>
     </div>
   </section>
 
-  <!-- ── REGISTER PATIENT PAGE ── -->
+  <!-- REGISTER -->
   <section class="page" id="page-register">
-    <div class="card">
-      <div class="card-header">
-        <h2>Patient Registration</h2>
-      </div>
-      <form id="registerForm" onsubmit="savePatient(event)">
-        <div class="form-section-title">Personal Information</div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Full Name *</label>
-            <input type="text" id="ptName" placeholder="e.g. Adaeze Okonkwo" required />
-          </div>
-          <div class="form-group">
-            <label>Date of Birth</label>
-            <input type="date" id="ptDob" />
-          </div>
-          <div class="form-group">
-            <label>Age *</label>
-            <input type="number" id="ptAge" placeholder="e.g. 34" min="0" max="130" required />
-          </div>
-          <div class="form-group">
-            <label>Sex *</label>
-            <select id="ptSex" required onchange="toggleGenderFields()">
-              <option value="">-- Select --</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" id="ptPhone" placeholder="e.g. 0801 234 5678" />
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <input type="text" id="ptAddress" placeholder="Patient address" />
+    <div class="section-card">
+      <div class="section-card-head"><h2>Register New Patient</h2></div>
+      <form id="registerForm" onsubmit="savePatient(event)" autocomplete="off">
+        <div class="form-block">
+          <div class="form-block-title"><span class="step-badge">1</span> Patient Details</div>
+          <div class="field-grid">
+            <div class="field full"><label>Full Name <span class="req">*</span></label><input type="text" id="ptName" placeholder="e.g. Adaeze Okonkwo" required /></div>
+            <div class="field"><label>Date of Birth</label><input type="date" id="ptDob" /></div>
+            <div class="field"><label>Age <span class="req">*</span></label><input type="number" id="ptAge" placeholder="Years" min="0" max="130" required /></div>
+            <div class="field"><label>Sex <span class="req">*</span></label><select id="ptSex" required><option value="">— Select —</option><option value="Male">Male</option><option value="Female">Female</option></select></div>
+            <div class="field"><label>Phone Number</label><input type="tel" id="ptPhone" placeholder="e.g. 0801 234 5678" /></div>
+            <div class="field full"><label>Home Address</label><input type="text" id="ptAddress" placeholder="Street, City" /></div>
           </div>
         </div>
-
-        <div class="form-section-title">Referral &amp; Clinical Info</div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label>Referring Physician</label>
-            <input type="text" id="ptRefPhysician" placeholder="e.g. Dr. Emeka Eze" />
-          </div>
-          <div class="form-group">
-            <label>Referring Hospital/Clinic</label>
-            <input type="text" id="ptRefHospital" placeholder="e.g. Lagos General Hospital" />
-          </div>
-          <div class="form-group">
-            <label>Scan Type *</label>
-            <select id="ptScanType" required>
-              <option value="">-- Select --</option>
-              <option value="Abdominal Ultrasound">Abdominal Ultrasound</option>
-              <option value="Pelvic Ultrasound">Pelvic Ultrasound</option>
-              <option value="Obstetric Ultrasound">Obstetric Ultrasound</option>
-              <option value="Thyroid Ultrasound">Thyroid Ultrasound</option>
-              <option value="Breast Ultrasound">Breast Ultrasound</option>
-              <option value="Scrotal Ultrasound">Scrotal Ultrasound</option>
-              <option value="Musculoskeletal Ultrasound">Musculoskeletal Ultrasound</option>
-              <option value="Renal/Urological Ultrasound">Renal/Urological Ultrasound</option>
-              <option value="Vascular Ultrasound">Vascular Ultrasound</option>
-              <option value="Whole Abdomen + Pelvis">Whole Abdomen + Pelvis</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Scan Date *</label>
-            <input type="date" id="ptScanDate" required />
-          </div>
-          <div class="form-group span2">
-            <label>Clinical History / Indication</label>
-            <textarea id="ptClinical" rows="3" placeholder="e.g. Epigastric pain, rule out hepatomegaly..."></textarea>
+        <div class="form-block">
+          <div class="form-block-title"><span class="step-badge">2</span> Referral &amp; Scan Details</div>
+          <div class="field-grid">
+            <div class="field"><label>Referring Physician</label><input type="text" id="ptRefPhysician" placeholder="Dr. Emeka Eze" /></div>
+            <div class="field"><label>Referring Hospital / Clinic</label><input type="text" id="ptRefHospital" placeholder="Lagos General Hospital" /></div>
+            <div class="field"><label>Scan Type <span class="req">*</span></label>
+              <select id="ptScanType" required><option value="">— Select —</option><option>Abdominal Ultrasound</option><option>Pelvic Ultrasound</option><option>Obstetric Ultrasound</option><option>Thyroid Ultrasound</option><option>Breast Ultrasound</option><option>Scrotal Ultrasound</option><option>Musculoskeletal Ultrasound</option><option>Renal / Urological Ultrasound</option><option>Vascular Ultrasound</option><option>Whole Abdomen + Pelvis</option></select>
+            </div>
+            <div class="field"><label>Scan Date <span class="req">*</span></label><input type="date" id="ptScanDate" required /></div>
+            <div class="field full"><label>Clinical History / Indication</label><textarea id="ptClinical" rows="3" placeholder="e.g. Epigastric pain, RUQ tenderness. Rule out hepatomegaly and cholelithiasis."></textarea></div>
           </div>
         </div>
-
-        <div class="form-actions">
-          <button type="reset" class="btn btn-outline">Clear</button>
-          <button type="submit" class="btn btn-primary">Register Patient &amp; Enter Findings</button>
+        <div class="form-footer">
+          <button type="reset" class="btn btn-ghost">Clear Form</button>
+          <button type="submit" class="btn btn-primary">Register &amp; Enter Findings <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></button>
         </div>
       </form>
     </div>
   </section>
 
-  <!-- ── FINDINGS ENTRY PAGE ── -->
+  <!-- FINDINGS -->
   <section class="page" id="page-findings">
-    <div class="card">
-      <div class="card-header">
-        <h2>Ultrasound Findings Entry</h2>
+    <div class="section-card" style="margin-bottom:18px">
+      <div class="patient-selector">
+        <label class="sel-label">Select Patient</label>
+        <select id="findingsPatientSelect" onchange="loadPatientForFindings()"><option value="">— Choose a registered patient —</option></select>
       </div>
-
-      <div class="patient-select-bar">
-        <label>Select Patient</label>
-        <select id="findingsPatientSelect" onchange="loadPatientForFindings()">
-          <option value="">-- Select a registered patient --</option>
-        </select>
-      </div>
-
-      <div id="findingsPatientInfo" class="patient-info-strip" style="display:none"></div>
-
-      <form id="findingsForm" onsubmit="saveFindings(event)" style="display:none">
+      <div id="findingsPatientInfo" class="pt-strip" style="display:none"></div>
+    </div>
+    <div class="section-card" id="findingsCard" style="display:none">
+      <div class="section-card-head"><h2>Ultrasound Findings</h2><span id="findingsScanBadge" class="scan-badge"></span></div>
+      <form id="findingsForm" onsubmit="saveFindings(event)" autocomplete="off">
         <input type="hidden" id="findingsPid" />
-
         <div id="abdominalFindings">
-          <div class="form-section-title">Abdominal / Organ Findings</div>
-          <div class="form-grid">
-            <div class="form-group span2">
-              <label>Liver</label>
-              <textarea id="fLiver" rows="3" placeholder="Size, echogenicity, surface, focal lesions..."></textarea>
+          <div class="form-block">
+            <div class="form-block-title">Upper Abdomen</div>
+            <div class="field-grid">
+              <div class="field full"><label>Liver</label><textarea id="fLiver" rows="3" placeholder="Size, echogenicity, surface contour, focal lesions, portal vein…"></textarea></div>
+              <div class="field full"><label>Gallbladder &amp; Biliary System</label><textarea id="fGallbladder" rows="3" placeholder="Size, wall thickness, lumen (stones/sludge/polyps), CBD diameter…"></textarea></div>
+              <div class="field"><label>Spleen</label><textarea id="fSpleen" rows="2" placeholder="Size, echogenicity, focal lesions…"></textarea></div>
+              <div class="field"><label>Pancreas</label><textarea id="fPancreas" rows="2" placeholder="Visualisation, head/body/tail, duct, echogenicity…"></textarea></div>
             </div>
-            <div class="form-group span2">
-              <label>Gallbladder &amp; Biliary System</label>
-              <textarea id="fGallbladder" rows="3" placeholder="Size, wall thickness, stones, sludge, CBD diameter..."></textarea>
+          </div>
+          <div class="form-block">
+            <div class="form-block-title">Urinary Tract &amp; Pelvic Organs</div>
+            <div class="field-grid">
+              <div class="field"><label>Right Kidney</label><textarea id="fRightKidney" rows="3" placeholder="Size, cortical thickness, echogenicity, PCS, calculi…"></textarea></div>
+              <div class="field"><label>Left Kidney</label><textarea id="fLeftKidney" rows="3" placeholder="Size, cortical thickness, echogenicity, PCS, calculi…"></textarea></div>
+              <div class="field full"><label>Urinary Bladder</label><textarea id="fBladder" rows="2" placeholder="Distension, wall thickness, intraluminal contents, post-void residual…"></textarea></div>
+              <div class="field full" id="uterusField"><label>Uterus &amp; Adnexa</label><textarea id="fUterus" rows="3" placeholder="Size, position, myometrium, endometrial thickness, ovaries, free fluid…"></textarea></div>
+              <div class="field full" id="prostateField" style="display:none"><label>Prostate Gland</label><textarea id="fProstate" rows="2" placeholder="Size (AP × Transverse × Length), volume, echogenicity, capsule…"></textarea></div>
             </div>
-            <div class="form-group span2">
-              <label>Spleen</label>
-              <textarea id="fSpleen" rows="2" placeholder="Size, echogenicity, focal lesions..."></textarea>
-            </div>
-            <div class="form-group span2">
-              <label>Pancreas</label>
-              <textarea id="fPancreas" rows="2" placeholder="Visualisation, size, echogenicity, duct..."></textarea>
-            </div>
-            <div class="form-group">
-              <label>Right Kidney</label>
-              <textarea id="fRightKidney" rows="3" placeholder="Size, cortical thickness, echogenicity, PCS, stones..."></textarea>
-            </div>
-            <div class="form-group">
-              <label>Left Kidney</label>
-              <textarea id="fLeftKidney" rows="3" placeholder="Size, cortical thickness, echogenicity, PCS, stones..."></textarea>
-            </div>
-            <div class="form-group span2">
-              <label>Urinary Bladder</label>
-              <textarea id="fBladder" rows="2" placeholder="Distension, wall, intraluminal contents, post-void residual..."></textarea>
-            </div>
-            <div class="form-group span2" id="uterusField">
-              <label>Uterus &amp; Adnexa</label>
-              <textarea id="fUterus" rows="3" placeholder="Size, position, myometrium, endometrium, ovaries, free fluid..."></textarea>
-            </div>
-            <div class="form-group span2" id="prostateField" style="display:none">
-              <label>Prostate</label>
-              <textarea id="fProstate" rows="2" placeholder="Size, volume, echogenicity..."></textarea>
-            </div>
-            <div class="form-group span2">
-              <label>Aorta &amp; IVC</label>
-              <textarea id="fAorta" rows="2" placeholder="Calibre, wall, aneurysm..."></textarea>
-            </div>
-            <div class="form-group span2">
-              <label>Other Findings / Ascites / Lymph Nodes</label>
-              <textarea id="fOther" rows="2" placeholder="Free fluid, lymphadenopathy, other notable findings..."></textarea>
+          </div>
+          <div class="form-block">
+            <div class="form-block-title">Vascular &amp; Other</div>
+            <div class="field-grid">
+              <div class="field"><label>Aorta &amp; IVC</label><textarea id="fAorta" rows="2" placeholder="Calibre, wall appearance, aneurysm…"></textarea></div>
+              <div class="field"><label>Free Fluid / Lymph Nodes / Other</label><textarea id="fOther" rows="2" placeholder="Ascites, lymphadenopathy, incidental findings…"></textarea></div>
             </div>
           </div>
         </div>
-
         <div id="obstetricFindings" style="display:none">
-          <div class="form-section-title">Obstetric Findings</div>
-          <div class="form-grid">
-            <div class="form-group"><label>Gestational Age (GA)</label><input type="text" id="fGA" placeholder="e.g. 20 weeks + 3 days" /></div>
-            <div class="form-group"><label>EDD</label><input type="date" id="fEDD" /></div>
-            <div class="form-group"><label>Fetal Presentation</label><input type="text" id="fPresentation" placeholder="Cephalic / Breech / Transverse" /></div>
-            <div class="form-group"><label>Fetal Heart Rate (FHR)</label><input type="text" id="fFHR" placeholder="e.g. 148 bpm" /></div>
-            <div class="form-group"><label>Placenta</label><input type="text" id="fPlacenta" placeholder="Location, grade, previa..." /></div>
-            <div class="form-group"><label>Amniotic Fluid (AFI)</label><input type="text" id="fAFI" placeholder="e.g. Normal (AFI 12 cm)" /></div>
-            <div class="form-group"><label>BPD</label><input type="text" id="fBPD" placeholder="mm" /></div>
-            <div class="form-group"><label>HC</label><input type="text" id="fHC" placeholder="mm" /></div>
-            <div class="form-group"><label>AC</label><input type="text" id="fAC" placeholder="mm" /></div>
-            <div class="form-group"><label>FL</label><input type="text" id="fFL" placeholder="mm" /></div>
-            <div class="form-group"><label>EFW</label><input type="text" id="fEFW" placeholder="e.g. 450 g" /></div>
-            <div class="form-group"><label>Number of Fetuses</label><input type="text" id="fFetuses" placeholder="e.g. Single / Twins" /></div>
-            <div class="form-group span2">
-              <label>Fetal Anatomy</label>
-              <textarea id="fAnatomy" rows="3" placeholder="Head, spine, heart, abdomen, limbs, kidneys..."></textarea>
-            </div>
-            <div class="form-group span2">
-              <label>Other Obstetric Notes</label>
-              <textarea id="fObsOther" rows="2"></textarea>
+          <div class="form-block">
+            <div class="form-block-title">Fetal Biometry</div>
+            <div class="field-grid">
+              <div class="field"><label>Gestational Age (GA)</label><input type="text" id="fGA" placeholder="e.g. 20 wks + 3 days" /></div>
+              <div class="field"><label>EDD</label><input type="date" id="fEDD" /></div>
+              <div class="field"><label>No. of Fetuses</label><input type="text" id="fFetuses" placeholder="Singleton / Twins" /></div>
+              <div class="field"><label>Presentation</label><input type="text" id="fPresentation" placeholder="Cephalic / Breech / Transverse" /></div>
+              <div class="field"><label>FHR</label><input type="text" id="fFHR" placeholder="e.g. 148 bpm" /></div>
+              <div class="field"><label>Placenta</label><input type="text" id="fPlacenta" placeholder="Location, grade, previa…" /></div>
+              <div class="field"><label>Amniotic Fluid (AFI)</label><input type="text" id="fAFI" placeholder="e.g. Normal – AFI 12 cm" /></div>
+              <div class="field"><label>BPD (mm)</label><input type="text" id="fBPD" /></div>
+              <div class="field"><label>HC (mm)</label><input type="text" id="fHC" /></div>
+              <div class="field"><label>AC (mm)</label><input type="text" id="fAC" /></div>
+              <div class="field"><label>FL (mm)</label><input type="text" id="fFL" /></div>
+              <div class="field"><label>EFW</label><input type="text" id="fEFW" placeholder="e.g. 450 g" /></div>
+              <div class="field full"><label>Fetal Anatomy Survey</label><textarea id="fAnatomy" rows="3" placeholder="Cranium, spine, heart, abdominal wall, stomach, kidneys, bladder, limbs…"></textarea></div>
+              <div class="field full"><label>Other Obstetric Notes</label><textarea id="fObsOther" rows="2"></textarea></div>
             </div>
           </div>
         </div>
-
         <div id="thyroidFindings" style="display:none">
-          <div class="form-section-title">Thyroid / Neck Findings</div>
-          <div class="form-grid">
-            <div class="form-group"><label>Right Lobe</label><textarea id="fThyroidR" rows="2" placeholder="Size, echogenicity, nodules..."></textarea></div>
-            <div class="form-group"><label>Left Lobe</label><textarea id="fThyroidL" rows="2" placeholder="Size, echogenicity, nodules..."></textarea></div>
-            <div class="form-group span2"><label>Isthmus / Overall</label><textarea id="fThyroidIst" rows="2"></textarea></div>
-            <div class="form-group span2"><label>Cervical Lymph Nodes</label><textarea id="fThyroidLN" rows="2"></textarea></div>
+          <div class="form-block">
+            <div class="form-block-title">Thyroid Gland</div>
+            <div class="field-grid">
+              <div class="field"><label>Right Lobe</label><textarea id="fThyroidR" rows="3" placeholder="Dimensions, echogenicity, nodules…"></textarea></div>
+              <div class="field"><label>Left Lobe</label><textarea id="fThyroidL" rows="3" placeholder="Dimensions, echogenicity, nodules…"></textarea></div>
+              <div class="field"><label>Isthmus</label><textarea id="fThyroidIst" rows="2" placeholder="AP thickness, appearance…"></textarea></div>
+              <div class="field"><label>Cervical Lymph Nodes</label><textarea id="fThyroidLN" rows="2" placeholder="Size, number, morphology…"></textarea></div>
+            </div>
           </div>
         </div>
-
         <div id="breastFindings" style="display:none">
-          <div class="form-section-title">Breast Findings</div>
-          <div class="form-grid">
-            <div class="form-group"><label>Right Breast</label><textarea id="fBreastR" rows="3" placeholder="Parenchymal pattern, masses, cysts, vascularity..."></textarea></div>
-            <div class="form-group"><label>Left Breast</label><textarea id="fBreastL" rows="3" placeholder="Parenchymal pattern, masses, cysts, vascularity..."></textarea></div>
-            <div class="form-group span2"><label>Axillary Lymph Nodes</label><textarea id="fBreastLN" rows="2"></textarea></div>
+          <div class="form-block">
+            <div class="form-block-title">Breast Examination</div>
+            <div class="field-grid">
+              <div class="field"><label>Right Breast</label><textarea id="fBreastR" rows="3" placeholder="Parenchymal pattern, masses, cysts…"></textarea></div>
+              <div class="field"><label>Left Breast</label><textarea id="fBreastL" rows="3" placeholder="Parenchymal pattern, masses, cysts…"></textarea></div>
+              <div class="field full"><label>Axillary Lymph Nodes</label><textarea id="fBreastLN" rows="2" placeholder="Right and left axillae…"></textarea></div>
+            </div>
           </div>
         </div>
-
-        <div class="form-section-title">Impression &amp; Conclusion</div>
-        <div class="form-grid">
-          <div class="form-group span2">
-            <label>Impression / Diagnosis *</label>
-            <textarea id="fImpression" rows="4" placeholder="Summarise the key ultrasound findings and their clinical significance..." required></textarea>
-          </div>
-          <div class="form-group span2">
-            <label>Recommendation</label>
-            <textarea id="fRecommendation" rows="2" placeholder="e.g. Clinical correlation advised. Follow-up scan in 6 weeks."></textarea>
-          </div>
-          <div class="form-group">
-            <label>Radiologist / Sonographer</label>
-            <input type="text" id="fRadiologist" placeholder="Name and qualification" />
-          </div>
-          <div class="form-group">
-            <label>Report Date</label>
-            <input type="date" id="fReportDate" />
+        <div class="form-block impression-block">
+          <div class="form-block-title">Impression &amp; Conclusion</div>
+          <div class="field-grid">
+            <div class="field full"><label>Impression / Diagnosis <span class="req">*</span></label><textarea id="fImpression" rows="5" placeholder="Summarise key findings and their clinical significance…" required></textarea></div>
+            <div class="field full"><label>Recommendation</label><textarea id="fRecommendation" rows="2" placeholder="e.g. Clinical correlation advised. Follow-up scan in 6 weeks."></textarea></div>
+            <div class="field"><label>Reporting Radiologist / Sonographer</label><input type="text" id="fRadiologist" placeholder="Name and qualification" /></div>
+            <div class="field"><label>Report Date</label><input type="date" id="fReportDate" /></div>
           </div>
         </div>
-
-        <div class="form-actions">
-          <button type="reset" class="btn btn-outline">Clear</button>
-          <button type="submit" class="btn btn-primary">Save Findings</button>
+        <div class="form-footer">
+          <button type="reset" class="btn btn-ghost">Clear</button>
+          <button type="submit" class="btn btn-primary"><svg viewBox="0 0 24 24"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>Save Findings</button>
         </div>
       </form>
     </div>
   </section>
 
-  <!-- ── REPORTS PAGE ── -->
+  <!-- REPORTS -->
   <section class="page" id="page-reports">
-    <div class="card">
-      <div class="card-header">
+    <div class="section-card">
+      <div class="section-card-head">
         <h2>Patient Reports</h2>
-        <div class="search-box">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          <input type="text" id="reportSearch" placeholder="Search patient name or ID…" oninput="filterReports()" />
-        </div>
+        <div class="search-wrap"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><input type="text" id="reportSearch" placeholder="Search by name or ID…" oninput="filterReports()" /></div>
       </div>
-      <div class="table-wrap">
-        <table class="data-table" id="reportsTable">
-          <thead>
-            <tr>
-              <th>ID</th><th>Patient Name</th><th>Age/Sex</th><th>Scan Type</th><th>Scan Date</th><th>Status</th><th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="reportsTableBody">
-            <tr class="empty-row"><td colspan="7">No reports yet.</td></tr>
-          </tbody>
-        </table>
+      <div class="table-scroll">
+        <table class="data-table"><thead><tr><th>ID</th><th>Patient Name</th><th>Age / Sex</th><th>Scan Type</th><th>Scan Date</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="reportsTableBody"><tr class="empty-row"><td colspan="7">No records yet.</td></tr></tbody></table>
       </div>
     </div>
   </section>
 
-</main>
+</div>
 
-<!-- ============================================================
-     PRINT MODAL
-     ============================================================ -->
-<div class="modal-overlay" id="printModal" onclick="closePrintModal(event)">
-  <div class="modal-box" id="printBox">
-    <div class="modal-actions no-print">
-      <button class="btn btn-primary" onclick="window.print()">
-        <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
-        Print Report
-      </button>
-      <button class="btn btn-outline" onclick="document.getElementById('printModal').style.display='none'">Close</button>
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+  <a class="bnav-item active" data-page="dashboard" onclick="showPage('dashboard')"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span>Dashboard</span></a>
+  <a class="bnav-item" data-page="register" onclick="showPage('register')"><svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg><span>Register</span></a>
+  <a class="bnav-item" data-page="findings" onclick="showPage('findings')"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span>Findings</span></a>
+  <a class="bnav-item" data-page="reports" onclick="showPage('reports')"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg><span>Reports</span></a>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none'"></div>
+
+<!-- PRINT MODAL -->
+<div class="modal-backdrop" id="printModal" onclick="closePrintModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-toolbar no-print">
+      <button class="btn btn-primary" onclick="window.print()"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>Print / Save PDF</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('printModal').style.display='none'">Close</button>
     </div>
     <div id="printContent"></div>
   </div>
 </div>
 
-<!-- DELETE CONFIRM -->
-<div class="modal-overlay" id="deleteModal" onclick="closeDeleteModal(event)">
-  <div class="modal-box small-modal">
-    <h3>Delete Patient Record</h3>
-    <p>Are you sure you want to permanently delete this patient record and all associated findings?</p>
-    <div class="form-actions">
-      <button class="btn btn-outline" onclick="document.getElementById('deleteModal').style.display='none'">Cancel</button>
-      <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+<!-- DELETE MODAL -->
+<div class="modal-backdrop" id="deleteModal" onclick="closeDeleteModal(event)">
+  <div class="modal-sheet modal-sm">
+    <div class="del-icon"><svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></div>
+    <h3>Delete Patient Record?</h3>
+    <p>This will permanently delete the patient registration and all ultrasound findings. This cannot be undone.</p>
+    <div class="del-actions">
+      <button class="btn btn-ghost" onclick="document.getElementById('deleteModal').style.display='none'">Cancel</button>
+      <button class="btn btn-danger" id="confirmDeleteBtn">Yes, Delete</button>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
-
 <script src="app.js"></script>
 </body>
 </html>
